@@ -1,105 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Jar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>8-Bit Love Jar</title>
+  <!-- Pixel font for that retro vibe -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      background: #222;
+      font-family: 'Press Start 2P', cursive;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f8f8f8;
+      color: #fff;
     }
+    /* Jar container styled to look like a transparent glass jar in pixel mode */
     .jar-container {
+      position: relative;
       width: 300px;
       height: 400px;
-      position: relative;
-      background-color: #FFD700;
-      border-radius: 20px 20px 10px 10px;
-      border: 3px solid #FF6347;
+      background: rgba(255, 255, 255, 0.05);
+      border: 4px solid rgba(200, 200, 200, 0.8);
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      image-rendering: pixelated;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
+    /* Top of the jar (the lid) */
     .jar-top {
-      width: 100%;
-      height: 50px;
-      background-color: #FF6347;
-      border-bottom: 3px solid #FF6347;
       position: absolute;
       top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 30px;
+      background: rgba(200, 200, 200, 0.4);
+      border-bottom: 4px solid rgba(200, 200, 200, 0.8);
+      border-radius: 5px 5px 0 0;
+      image-rendering: pixelated;
     }
+    /* Bottom of the jar */
     .jar-bottom {
-      width: 100%;
-      height: 20px;
-      background-color: #FFD700;
       position: absolute;
       bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 20px;
+      background: rgba(200, 200, 200, 0.4);
+      border-top: 4px solid rgba(200, 200, 200, 0.8);
+      border-radius: 0 0 5px 5px;
+      image-rendering: pixelated;
     }
+    /* Love letters styled in pixel mode */
     .letter {
-      background-color: #fff;
-      padding: 15px;
-      margin: 10px;
-      border: 2px solid #FF6347;
+      position: absolute;
+      width: 80%;
+      left: 10%;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #fff;
+      padding: 10px;
+      text-align: center;
       cursor: pointer;
       transition: transform 0.2s;
-      border-radius: 10px;
-      text-align: center;
+      image-rendering: pixelated;
     }
     .letter:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
+    /* Hidden content for each letter */
     .letter-content {
       display: none;
-      margin-top: 15px;
-      font-size: 18px;
-      color: #333;
-      background-color: #FFFAF0;
-      padding: 10px;
-      border-radius: 10px;
-      border: 2px solid #FF6347;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      font-size: 10px;
+      line-height: 1.2;
+      color: #0f0;
+      border-top: 1px dashed #fff;
+      padding-top: 5px;
+    }
+    /* Positioning the letters within the jar */
+    #letter1 {
+      top: 60px;
+    }
+    #letter2 {
+      top: 160px;
+    }
+    #letter3 {
+      top: 260px;
     }
   </style>
 </head>
 <body>
-
   <div class="jar-container">
     <div class="jar-top"></div>
-    <div class="letter" onclick="showLetter(1)">
+    <div class="jar-bottom"></div>
+    
+    <!-- Letter 1 -->
+    <div class="letter" id="letter1" onclick="toggleLetter(1)">
       Letter 1
-      <div class="letter-content" id="letter-1">
+      <div class="letter-content" id="content1">
         Kovil ethurke, deivangal ethurke, unnadhe vizhigal podhume.
       </div>
     </div>
-    <div class="letter" onclick="showLetter(2)">
+    
+    <!-- Letter 2 -->
+    <div class="letter" id="letter2" onclick="toggleLetter(2)">
       Letter 2
-      <div class="letter-content" id="letter-2">
+      <div class="letter-content" id="content2">
         I hope you know you are always in my prayers when I visit a temple.
       </div>
     </div>
-    <div class="letter" onclick="showLetter(3)">
+    
+    <!-- Letter 3 -->
+    <div class="letter" id="letter3" onclick="toggleLetter(3)">
       Letter 3
-      <div class="letter-content" id="letter-3">
+      <div class="letter-content" id="content3">
         I love you my mutton curry.
       </div>
     </div>
-    <div class="jar-bottom"></div>
   </div>
-
+  
   <script>
-    function showLetter(letterNumber) {
-      var content = document.getElementById('letter-' + letterNumber);
-      if (content.style.display === "none" || content.style.display === "") {
-        content.style.display = "block";
-      } else {
-        content.style.display = "none";
-      }
+    function toggleLetter(num) {
+      const content = document.getElementById('content' + num);
+      content.style.display = content.style.display === "block" ? "none" : "block";
     }
   </script>
-
 </body>
 </html>
