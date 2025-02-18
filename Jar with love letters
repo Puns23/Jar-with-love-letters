@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Jar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f8f8f8;
+    }
+    .jar-container {
+      width: 300px;
+      height: 400px;
+      position: relative;
+      background-color: #FFD700;
+      border-radius: 20px 20px 10px 10px;
+      border: 3px solid #FF6347;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    .jar-top {
+      width: 100%;
+      height: 50px;
+      background-color: #FF6347;
+      border-bottom: 3px solid #FF6347;
+      position: absolute;
+      top: 0;
+    }
+    .jar-bottom {
+      width: 100%;
+      height: 20px;
+      background-color: #FFD700;
+      position: absolute;
+      bottom: 0;
+    }
+    .letter {
+      background-color: #fff;
+      padding: 15px;
+      margin: 10px;
+      border: 2px solid #FF6347;
+      cursor: pointer;
+      transition: transform 0.2s;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .letter:hover {
+      transform: scale(1.1);
+    }
+    .letter-content {
+      display: none;
+      margin-top: 15px;
+      font-size: 18px;
+      color: #333;
+      background-color: #FFFAF0;
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #FF6347;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="jar-container">
+    <div class="jar-top"></div>
+    <div class="letter" onclick="showLetter(1)">
+      Letter 1
+      <div class="letter-content" id="letter-1">
+        Kovil ethurke, deivangal ethurke, unnadhe vizhigal podhume.
+      </div>
+    </div>
+    <div class="letter" onclick="showLetter(2)">
+      Letter 2
+      <div class="letter-content" id="letter-2">
+        I hope you know you are always in my prayers when I visit a temple.
+      </div>
+    </div>
+    <div class="letter" onclick="showLetter(3)">
+      Letter 3
+      <div class="letter-content" id="letter-3">
+        I love you my mutton curry.
+      </div>
+    </div>
+    <div class="jar-bottom"></div>
+  </div>
+
+  <script>
+    function showLetter(letterNumber) {
+      var content = document.getElementById('letter-' + letterNumber);
+      if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+      } else {
+        content.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
